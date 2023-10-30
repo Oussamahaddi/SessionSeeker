@@ -4,22 +4,22 @@ import PathConstants from '../routes/pathConstants'
 
 function Header() {
   return (
-    <>
+    <nav>
       <ul>
           <li>
-            <Link to={PathConstants.HOME} />Home
+            <Link to={PathConstants.HOME}>Home</Link>
           </li>
           <li>
-            <Link to={PathConstants.ABOUT} />About
+            <Link to={PathConstants.ABOUT} >About</Link>
           </li>
           <li>
-            <Link to={PathConstants.CATEGORIES} />Categories
+            <Link to={PathConstants.CATEGORIES} >Categories</Link>
           </li>
           <li>
-            <Link to={PathConstants.REGISTER} />Register
+            <Link to={PathConstants.REGISTER} >Register</Link>
           </li>
         </ul>
-    </>
+    </nav>
   )
 }
 
