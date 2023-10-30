@@ -2,9 +2,21 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Before Start
+
+first you need to clone projet by runing this cmd : 
+
+### `git clone https://github.com/Oussamahaddi/SessionSeeker.git`
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+this for installing the node_modules that has packages for your projet :
+
+### `npm i`
+
+then you can run this cmd to run the projet : 
 
 ### `npm start`
 
