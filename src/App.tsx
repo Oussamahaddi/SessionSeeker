@@ -1,8 +1,7 @@
 import React from 'react';
-import './App.css';
 import {RouterProvider, createBrowserRouter} from "react-router-dom";
 import {Page404} from "./pages"
-import Layout from './components/Layout';
+import Layout from './components/layout/Layout';
 import routes from './routes';
 
 function App() {
