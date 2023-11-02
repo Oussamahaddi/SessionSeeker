@@ -1,6 +1,15 @@
-# Getting Started with Create React App
+# Getting Started
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## What is SessionsSeeker ?
+
+Is an application that has 5 pages 
+ - Home : welcome page that has a little information about our services ...
+ - About : it has all information that you need to know about us and services and what we do
+ - Categories : is the important page that has all categories and each categorie show sessions and each sessions show a speaker
+ - Register : it has simple register that that redirect to the thanks page
+ - Thanks : is the page that show after registered
+
+This application is built with ReactJs using Typescript and StyledComponent
 
 ## Before Start
 
