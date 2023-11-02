@@ -1,24 +1,24 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import PathConstants from '../../routes/pathConstants'
 import styled from 'styled-components'
 
 export default function Header() {
-
+  
   return (
     <StyledNav>
       <StyledUl>
-        <StyledLi>
-          <Link to={PathConstants.HOME}>Home</Link>
+        <StyledLi >
+          <NavLink className={({isActive}) => (isActive ? "text-[#009696] underline" : "text-red-500")} to={PathConstants.HOME}>Home</NavLink>
         </StyledLi>
         <StyledLi>
-          <Link to={PathConstants.ABOUT} >About</Link>
+          <NavLink className={({isActive}) => (isActive ? "text-[#009696] underline" : "text-red-500")} to={PathConstants.ABOUT} >About</NavLink>
         </StyledLi>
         <StyledLi>
-          <Link to={PathConstants.CATEGORIES} >Categories</Link>
+          <NavLink className={({isActive}) => (isActive ? "text-[#009696] underline" : "text-red-500")} to={PathConstants.CATEGORIES} >Categories</NavLink>
         </StyledLi>
         <StyledLi>
-          <Link to={PathConstants.REGISTER} >Register</Link>
+          <NavLink className={({isActive}) => (isActive ? "text-[#009696] underline" : "text-red-500")} to={PathConstants.REGISTER} >Register</NavLink>
         </StyledLi>
       </StyledUl>
     </StyledNav>
@@ -26,11 +26,9 @@ export default function Header() {
 }
 
 const StyledLi = styled.li`
-  color: red;
   &:hover {
-    color: aqua
+    color: #009696;
   };
-  
 `
 
 const StyledUl = styled.ul`

@@ -1,15 +1,11 @@
 import React from "react"
 import PathConstants from "./pathConstants"
 
-// const Home = React.lazy(() => import("../pages/Home"))
-// const About = React.lazy(() => import("../pages/About"))
-// const Categories = React.lazy(() => import("../pages/Categories"))
-// const Register = React.lazy(() => import("../pages/Register"))
-
-import Home from "../pages/Home"
-import About from "../pages/About"
-import Categories from "../pages/Categories"
-import Register from "../pages/Register"
+const Home = React.lazy(() => import("../pages/Home"))
+const About = React.lazy(() => import("../pages/About"))
+const Categories = React.lazy(() => import("../pages/Categories"))
+const Register = React.lazy(() => import("../pages/Register"))
+const Thanks = React.lazy(() => import("../pages/Thanks"))
 
 const routes = [
     { 
@@ -25,9 +21,21 @@ const routes = [
       element: <Categories /> 
     },
     { 
+      path: `${PathConstants.CATEGORIES}/:catId`,
+      element: <Categories />
+    },
+    { 
+      path: `${PathConstants.CATEGORIES}/:catId/:sessionId`,
+      element: <Categories />
+    },
+    { 
       path: PathConstants.REGISTER, 
       element: <Register /> 
     },
+    { 
+      path: `${PathConstants.THANKS}`, 
+      element: <Thanks /> 
+    }
 ]
 
 export default routes

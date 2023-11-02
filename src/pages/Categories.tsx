@@ -3,40 +3,74 @@ import { StyledH1 } from '../components/styledComponent'
 import styled from 'styled-components'
 import Categorie from '../components/Categorie'
 import Session from '../components/Session'
-import { CategoryT } from '../types/categorie'
-import { getCategories } from '../api'
+import { CategoryT, SessionsT, SingleCategoryT } from '../types/categorie'
+import { getCategories, getCategory, getSession } from '../api'
+import { NavLink, useParams } from 'react-router-dom'
+import PathConstants from '../routes/pathConstants'
+import Speaker from '../components/Speaker'
 
 
 export default function Categories () {
 
-  const [data, setData] = useState<CategoryT[]>([]);
+  const [categories, setCategories] = useState<CategoryT[]>([]);
+  const [selectedCategory, setSelectedCategoryt] = useState<SingleCategoryT>();
+  const [selectedSession, setSelectedSession] = useState<SessionsT>();
+  
+  const {catId} = useParams<string>();
+  const {sessionId} = useParams<string>();
 
-  const getData = async () => {
-    setData(getCategories());
+  const getData = () => {
+    setCategories(getCategories());
   }
 
   useEffect(() => {
     getData();
   }, [])
-  
+
+  useEffect(() => {
+    setSelectedCategoryt(getCategory(catId));
+  }, [catId])
+
+  useEffect(() => {
+    setSelectedSession(getSession(catId, sessionId));
+  }, [catId, sessionId])
 
   return (
     <>
       <StyledH1>Session Categories</StyledH1>
       <StyledCategories>
         {
-          data.map((ele, i) => (
-            <Categorie key={i} category={ele} />
+          categories.map((ele, i) => (
+            <NavLink 
+              className={({isActive}) => (isActive ? "bg-[#494949] text-white rounded" : "")} 
+              key={i} 
+              to={`${PathConstants.CATEGORIES}/${ele.id}`}
+            >
+              <Categorie category={ele} />
+            </NavLink>
           ))
         }
       </StyledCategories>
-      <StyledH1 color='gray'>3D Printing and design</StyledH1>
-      <StyledSessions>
-        <Session />
-        <Session />
-        <Session />
-        <Session />
-      </StyledSessions>
+      {
+        catId &&
+        <>
+          <StyledH1 color='gray'>{catId}</StyledH1>
+          <StyledSessions>
+            {selectedCategory?.sessions.map((ele, i) => (
+              <NavLink
+                className={({isActive}) => (isActive ? "text-[#009696] border border-[#009696]" : "border border-black")}
+                key={i} 
+                to={`${PathConstants.CATEGORIES}/${catId}/${ele.id}`}
+              >
+                <Session session={ele}  />
+              </NavLink>
+            ))}
+          </StyledSessions>
+          {
+            selectedSession ? <Speaker selectedSession={selectedSession} /> : <StyledH3>Select a Category from above</StyledH3>
+          }
+        </>
+      }
     </>
   )
 }
@@ -53,4 +87,8 @@ const StyledSessions = styled.div`
   display : flex;
   flex-wrap: wrap;
   gap: 20px;
+`
+const StyledH3 = styled.div`
+  font-size: 18px;
+  font-weight: 700;
 `

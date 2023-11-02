@@ -232,14 +232,14 @@ const categories = [
 ];
 
 // get single category
-export const getCategory = (catId) => {return categories.find(ele => ele.id === catId) ?? "Not Found"}
+export const getCategory = (catId) => {return categories.find(ele => ele.id === catId)}
 
 // get all categories without sessions
-export const getCategories = () => {return categories.map(({name, id}) => ({name, id})) ?? "Not Found"}
+export const getCategories = () => {return categories.map(({name, id}) => ({name, id}))}
 
 // get single category then inside the category get single sessions
 export const getSession = (catId, sessionId) => {
-  return categories.find(ele => ele.id === catId)?.sessions.find(session => session.id === sessionId) ?? "Not Found"
+  return categories.find(ele => ele.id === catId)?.sessions.find(session => session.id === sessionId)
 }
 
 

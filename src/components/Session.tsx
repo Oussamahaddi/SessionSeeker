@@ -1,12 +1,18 @@
 import React from 'react'
-import styled from "styled-components"
+import styled from "styled-components";
+import { SessionsT } from '../types/categorie';
 
-const Session = () => {
+type PropsType = {
+  session : SessionsT
+}
+
+const Session : React.FC<PropsType> = ({session}) => {
+
   return (
     <>
       <StyledSession>
-        <StyledH3>3D Printing and Design</StyledH3>
-        <StyledP>Augmented Reality Estate</StyledP>
+        <StyledH3>{session.name}</StyledH3>
+        <StyledP>{session.speaker.name} | {session.speaker.org}</StyledP>
       </StyledSession>
     </>
   )
@@ -16,7 +22,10 @@ export default Session;
 
 const StyledSession = styled.div`
   padding: .5rem 1rem;
-  border : 1px solid black;
+  &:hover {
+    border-color : #009696;
+    color: #009696;
+  }
 `
 
 const StyledH3 = styled.h3`

@@ -3,6 +3,12 @@ export type CategoryT = {
   id: string,
 }
 
+export type SingleCategoryT = {
+  name: string,
+  id: string,
+  sessions : SessionsT[];
+}
+
 export type SessionsT = {
   name: string,
   id: string,

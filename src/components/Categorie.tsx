@@ -1,16 +1,16 @@
 import React from 'react'
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
 import { CategoryT } from '../types/categorie';
 
 type PropsType = {
-  category : CategoryT
+  category : CategoryT,
 }
 
 const Categorie : React.FC<PropsType> = ({category}) => {
+
   return (
     <StyleSingleCat>
-      <Link to="">{category.name}</Link>
+      {category.name}
     </StyleSingleCat>
   )
 }
@@ -18,7 +18,7 @@ const Categorie : React.FC<PropsType> = ({category}) => {
 export default Categorie;
 
 const StyleSingleCat = styled.div`
-  color: #494949;
+  border-radius: 5px;
   font-size: 15px;
   padding: 0 5px;
   &:hover {
